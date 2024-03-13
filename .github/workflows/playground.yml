@@ -19,14 +19,14 @@ jobs:
             - name: Install Node.js
               uses: actions/setup-node@v4
               with:
-                  node-version: 18
+                  node-version: 21
 
             - name: Cache Restore devDependencies
               id: cache-restore-dev-depends
               uses: actions/cache/restore@v4
               with:
                   path: '**/node_modules'
-                  key: dev-depends-ubuntu-latest-node18-${{ hashFiles('yarn.lock') }}
+                  key: dev-depends-ubuntu-latest-node21-${{ hashFiles('yarn.lock') }}
 
             - name: Playground Building Test
               run: yarn pg:build
@@ -42,14 +42,14 @@ jobs:
             - name: Install Node.js
               uses: actions/setup-node@v4
               with:
-                  node-version: 18
+                  node-version: 21
 
             - name: Cache Restore devDependencies
               id: cache-restore-dev-depends
               uses: actions/cache/restore@v4
               with:
                   path: '**/node_modules'
-                  key: dev-depends-ubuntu-latest-node18-${{ hashFiles('yarn.lock') }}
+                  key: dev-depends-ubuntu-latest-node21-${{ hashFiles('yarn.lock') }}
 
             - name: Install root dependencies
               run: yarn install --frozen-lockfile
