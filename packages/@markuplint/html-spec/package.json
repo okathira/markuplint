@@ -32,5 +32,6 @@
 	},
 	"dependencies": {
 		"@markuplint/ml-spec": "4.6.3"
-	}
+	},
+	"comment": "test"
 }
