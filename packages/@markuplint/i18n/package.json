@@ -36,5 +36,6 @@
 		"build:esm": "tsc",
 		"build:cjs": "tsc --module commonjs --outDir cjs",
 		"clean": "tsc --build --clean"
-	}
+	},
+	"comment": "test"
 }
