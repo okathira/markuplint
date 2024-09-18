@@ -15,7 +15,7 @@
 	"dependencies": {
 		"@types/node": "latest",
 		"typescript": "latest",
-		"tsx": "latest"
+		"tsx": "4.19.0"
 	},
 	"devDependencies": {
 		"npm-run-all": "latest"
