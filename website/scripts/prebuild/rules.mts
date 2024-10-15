@@ -1,5 +1,6 @@
 import { readFile, readdir, stat } from 'node:fs/promises';
-import { resolve, basename, extname, relative, dirname } from 'node:path';
+import nodePath from 'node:path';
+const { resolve, basename, extname, relative, dirname } = nodePath;
 import { pathToFileURL } from 'node:url';
 
 import matter from 'gray-matter';
@@ -64,19 +65,18 @@ async function getDocFile(
 
   let rewrote = rewriteRuleContent(content, id, value, options, severity ?? inherit?.severity, lang);
 
-  // eslint-disable-next-line import/no-named-as-default-member
   rewrote = matter.stringify(rewrote, frontMatter);
+
+  const langObj = lang === undefined ? {} : { lang }; // for strict undefined check
 
   return {
     ...inherit,
-    ...JSON.parse(
-      JSON.stringify({
-        lang,
-        id: frontMatter.id,
-        description: frontMatter.description,
-        contents: rewrote,
-      }),
-    ),
+    ...structuredClone({
+      ...langObj,
+      id: frontMatter.id,
+      description: frontMatter.description,
+      contents: rewrote,
+    }),
   };
 }
 

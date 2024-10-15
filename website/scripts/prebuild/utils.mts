@@ -1,6 +1,7 @@
 import { statSync } from 'node:fs';
 import { rm, writeFile, readdir } from 'node:fs/promises';
-import { resolve, dirname, basename, sep } from 'node:path';
+import nodePath from 'node:path';
+const { resolve, dirname, basename, sep } = nodePath;
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import syncGlob from 'glob';
@@ -14,8 +15,8 @@ export const projectRoot = resolve(__dirname, '..', '..', '..');
  * Get `editUrlBase`
  */
 export async function getEditUrlBase(): Promise<string> {
-  // eslint-disable-next-line unicorn/no-await-expression-member
-  return (await import(pathToFileURL(resolve(projectRoot, 'website', 'config.js')).toString())).default.editUrlBase;
+  const config = await import(pathToFileURL(resolve(projectRoot, 'website', 'config.js')).toString());
+  return config.default.editUrlBase;
 }
 
 /**
@@ -40,16 +41,13 @@ export async function dropFiles(dirPath: string, placeholder?: string): Promise<
     dirList.push(dirPath);
   }
 
-  const contents = (
-    await Promise.all(
-      dirList.map(async dir => {
-        const files = await readdir(dir);
-        return files.map(file => resolve(dir, file));
-      }),
-    )
-  )
-    // eslint-disable-next-line unicorn/no-await-expression-member
-    .flat();
+  const contentsList = await Promise.all(
+    dirList.map(async dir => {
+      const files = await readdir(dir);
+      return files.map(file => resolve(dir, file));
+    }),
+  );
+  const contents = contentsList.flat();
 
   await Promise.all(
     contents.map(async content => {
