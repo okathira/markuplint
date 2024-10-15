@@ -11,7 +11,7 @@ export async function getFileList(input: readonly string[]) {
 				}
 				return path.resolve(process.cwd(), filePath);
 			})
-			.map(filePath => glob(filePath)),
+			.map(filePath => glob(filePath, { windowsPathsNoEscape: true })),
 	);
 	return result.flat();
 }

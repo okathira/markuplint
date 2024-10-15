@@ -86,7 +86,7 @@ export async function importFileData(filePath: string): Promise<any> {
  */
 export function glob(dir: string): Promise<string[]> {
   return new Promise((res, rej) => {
-    syncGlob(dir, (err, matches) => {
+    syncGlob(dir, { windowsPathsNoEscape: true }, (err, matches) => {
       if (err) {
         return rej(err);
       }

@@ -4,7 +4,7 @@ import { glob } from 'glob';
 import Mocha from 'mocha';
 
 export async function run() {
-	const testFiles = await glob(path.resolve(__dirname, '*.spec.js'));
+	const testFiles = await glob(path.resolve(__dirname, '*.spec.js'), { windowsPathsNoEscape: true });
 
 	const mocha = new Mocha({
 		ui: 'tdd',

@@ -90,7 +90,7 @@ async function createRuleDoc(path: string) {
   const doc = await getDocFile(docFile, value, options, severity);
   doc.category = category;
   doc.severity = severity;
-  const i18nDocFiles = await glob(resolve(path, 'README.*.md'));
+  const i18nDocFiles = await glob(resolve(path, 'README.*.md')); // slashes have normalized already
   const i18nDocs = await Promise.all(i18nDocFiles.map(docPath => getDocFile(docPath, value, options, severity, doc)));
 
   return [doc, ...i18nDocs];

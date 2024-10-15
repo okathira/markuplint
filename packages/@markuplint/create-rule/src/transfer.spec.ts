@@ -38,7 +38,7 @@ test('transfer', async () => {
 			ruleName: 'banana',
 		},
 	});
-	const fileList = await glob(path.resolve(TEST_SANDBOX, '**', '*'));
+	const fileList = await glob(path.resolve(TEST_SANDBOX, '**', '*')); // slashes have normalized already
 	expect(fileList.sort().map(file => path.relative(TEST_SANDBOX, file).split(path.sep).join('/'))).toEqual([
 		'core',
 		'core/README.ja.md',

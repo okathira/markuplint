@@ -14,7 +14,7 @@ export async function createRulePackage({
 }: CreateRuleCreatorParams): Promise<CreateRuleHelperResult> {
 	const newRuleDir = path.resolve(process.cwd(), '*');
 
-	const files = await glob(newRuleDir);
+	const files = await glob(newRuleDir); // slashes have normalized already
 
 	if (files.length > 0) {
 		throw new CreateRuleHelperError('The directory is not empty');
