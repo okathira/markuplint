@@ -8,9 +8,9 @@ import matter from 'gray-matter';
 import { rewriteRuleContent } from './rule-content.mjs';
 import { dropFiles, getEditUrlBase, glob, importFileData, output, projectRoot } from './utils.mjs';
 
-type RuleIndexContents = Readonly<
-  Record<'validation' | 'a11y' | 'naming-convention' | 'maintainability' | 'style', readonly string[]>
->;
+type Category = 'validation' | 'a11y' | 'naming-convention' | 'maintainability' | 'style';
+type Rule = Readonly<{ id?: string | undefined; description?: string | undefined; href?: string | undefined }>;
+type RuleIndexContents = Readonly<Record<Category, readonly Rule[]>>;
 type RuleIndex = Readonly<{ lang: string; contents: RuleIndexContents }>;
 type DocData = {
   lang: string;
@@ -99,7 +99,7 @@ async function createRuleDoc(path: string) {
 /**
  * Create empty index
  */
-function createIndexContents(): RuleIndexContents {
+function createEmptyIndexContents(): RuleIndexContents {
   return {
     validation: [],
     a11y: [],
@@ -107,6 +107,38 @@ function createIndexContents(): RuleIndexContents {
     maintainability: [],
     style: [],
   };
+}
+
+function createEmptyIndex(lang: string): RuleIndex {
+  const emptyIndexContents = createEmptyIndexContents();
+
+  return {
+    lang,
+    contents: emptyIndexContents,
+  };
+}
+
+function isValidCategory(category: string | undefined): category is Category {
+  if (!category) {
+    return false;
+  }
+  return ['validation', 'a11y', 'naming-convention', 'maintainability', 'style'].includes(category);
+}
+
+/**
+ * add a rule to index contents and return the new contents
+ */
+function addRuleToIndexContents(
+  baseIndexContents: RuleIndexContents,
+  category: string | undefined,
+  rule: Rule,
+): RuleIndexContents {
+  if (isValidCategory(category)) {
+    const baseCategory = baseIndexContents[category];
+
+    return { ...baseIndexContents, [category]: [...baseCategory, rule] };
+  }
+  return { ...baseIndexContents };
 }
 
 /**
@@ -123,19 +155,15 @@ async function createEachRule(
     const docs = await createRuleDoc(path);
 
     for (const doc of docs) {
-      const index: RuleIndex = indexes.find(idx => idx.lang === doc.lang) ?? {
-        lang: doc.lang!,
-        contents: createIndexContents(),
-      };
-
-      // @ts-expect-error
-      index.contents[doc.category].push({
+      const currentIndex: RuleIndex = indexes.find(idx => idx.lang === doc.lang) ?? createEmptyIndex(doc.lang!);
+      const updatedIndexContents = addRuleToIndexContents(currentIndex.contents, doc.category, {
         id: doc.id,
         description: doc.description,
       });
+      const updatedIndex: RuleIndex = { ...currentIndex, contents: updatedIndexContents };
 
       if (!indexes.some(idx => idx.lang === doc.lang)) {
-        indexes.push(index);
+        indexes.push(updatedIndex);
       }
 
       const dist = doc.lang
@@ -155,16 +183,16 @@ async function createEachRule(
  * Create rule index page
  */
 async function crateRuleIndexDoc(index: RuleIndexContents, ruleDocsDistDir: string) {
-  const ruleListItem = (rule: any) =>
+  const ruleListItem = (rule: Rule) =>
     rule.href
       ? `[\`${rule.id}\`](${rule.href})|${rule.description}`
       : `[\`${rule.id}\`](/docs/rules/${rule.id})|${rule.description}`;
 
-  const table = (list: readonly any[]) => {
+  const table = (list: readonly Rule[]) => {
     return ['Rule ID|Description', '---|---', ...list.map(ruleListItem)];
   };
 
-  const removedTable = (list: readonly any[], drop: string) => {
+  const removedTable = (list: readonly Rule[], drop: string) => {
     return [
       'Rule ID|Description|Drop',
       '---|---|---',
