@@ -83,7 +83,7 @@ describe('schema', () => {
 
 	for (const [testName, validator, targetFiles] of map) {
 		test(testName, async () => {
-			const files = await glob(targetFiles);
+			const files = await glob(targetFiles, { windowsPathsNoEscape: true });
 			for (const jsonPath of files) {
 				const json = JSON.parse(strip(await readFile(jsonPath, { encoding: 'utf-8' })));
 				const isValid = validator(json);

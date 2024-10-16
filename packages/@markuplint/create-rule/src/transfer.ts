@@ -114,7 +114,7 @@ async function transferFile(scaffoldType: 'core' | 'project' | 'package', file: 
 }
 
 async function scan(baseDir: string, destDir: string) {
-	const fileList = await glob(path.resolve(baseDir, '**', '*'));
+	const fileList = await glob(path.resolve(baseDir, '**', '*')); // slashes have normalized already
 
 	const destList = fileList
 		.map(filePath => {

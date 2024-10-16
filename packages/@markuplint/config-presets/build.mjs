@@ -12,7 +12,7 @@ const srcDir = path.resolve(dirname, 'src');
 const currents = await glob('preset.*.json,!preset.___json');
 await Promise.all(currents.map(current => rm(current)));
 
-const files = await glob('*.json', { cwd: srcDir });
+const files = await glob('*.json', { cwd: srcDir, windowsPathsNoEscape: true });
 const md = await readFile(path.resolve(srcDir, 'README.md'), { encoding: 'utf8' });
 
 files.sort();
