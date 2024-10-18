@@ -128,6 +128,7 @@ async function createEachRule(
         contents: createIndexContents(),
       };
 
+      // change
       // @ts-expect-error
       index.contents[doc.category].push({
         id: doc.id,
