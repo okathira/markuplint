@@ -22,5 +22,8 @@ jobs:
               with:
                   node-version: 18
 
+            # 試しにインストール
             - name: Install dependencies
-              run: yarn site:build
+              run: |
+                  yarn
+                  yarn site:build
