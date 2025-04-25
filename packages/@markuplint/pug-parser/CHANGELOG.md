@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.19](https://github.com/markuplint/markuplint/compare/@markuplint/pug-parser@4.6.18...@markuplint/pug-parser@4.6.19) (2025-04-13)
+
+**Note:** Version bump only for package @markuplint/pug-parser
+
+## [4.6.18](https://github.com/markuplint/markuplint/compare/@markuplint/pug-parser@4.6.17...@markuplint/pug-parser@4.6.18) (2025-03-09)
+
+**Note:** Version bump only for package @markuplint/pug-parser
+
+## [4.6.17](https://github.com/markuplint/markuplint/compare/@markuplint/pug-parser@4.6.16...@markuplint/pug-parser@4.6.17) (2025-02-27)
+
+**Note:** Version bump only for package @markuplint/pug-parser
+
+## [4.6.16](https://github.com/markuplint/markuplint/compare/@markuplint/pug-parser@4.6.15...@markuplint/pug-parser@4.6.16) (2025-02-11)
+
+### Bug Fixes
+
+- **pug-parser:** implemented previously unsupported nodes, including `InterpolatedTag` ([a89e39a](https://github.com/markuplint/markuplint/commit/a89e39ab5bc09bfef2c7bc7fdcba65f6b672eb34)), closes [#2440](https://github.com/markuplint/markuplint/issues/2440)
+
+## [4.6.15](https://github.com/markuplint/markuplint/compare/@markuplint/pug-parser@4.6.14...@markuplint/pug-parser@4.6.15) (2025-02-04)
+
+**Note:** Version bump only for package @markuplint/pug-parser
+
+## [4.6.14](https://github.com/markuplint/markuplint/compare/@markuplint/pug-parser@4.6.13...@markuplint/pug-parser@4.6.14) (2024-12-04)
+
+**Note:** Version bump only for package @markuplint/pug-parser
+
+## [4.6.13](https://github.com/markuplint/markuplint/compare/@markuplint/pug-parser@4.6.12...@markuplint/pug-parser@4.6.13) (2024-11-17)
+
+**Note:** Version bump only for package @markuplint/pug-parser
+
+## [4.6.12](https://github.com/markuplint/markuplint/compare/@markuplint/pug-parser@4.6.11...@markuplint/pug-parser@4.6.12) (2024-10-31)
+
+### Performance Improvements
+
+- **pug-parser:** prevent redundant recursive parsing ([d883826](https://github.com/markuplint/markuplint/commit/d883826d25745a31f45e5ba7cde1dfa8f32a358c))
+- **pug-parser:** return null in `visitSpreadAttr` for Pug, as the method is unnecessary ([56e0d61](https://github.com/markuplint/markuplint/commit/56e0d61e370872a4328ff3e70a89947bc6fbcf7a))
+
+## [4.6.11](https://github.com/markuplint/markuplint/compare/@markuplint/pug-parser@4.6.10...@markuplint/pug-parser@4.6.11) (2024-10-28)
+
+**Note:** Version bump only for package @markuplint/pug-parser
+
+## [4.6.10](https://github.com/markuplint/markuplint/compare/@markuplint/pug-parser@4.6.9...@markuplint/pug-parser@4.6.10) (2024-10-27)
+
+**Note:** Version bump only for package @markuplint/pug-parser
+
+## [4.6.9](https://github.com/markuplint/markuplint/compare/@markuplint/pug-parser@4.6.8...@markuplint/pug-parser@4.6.9) (2024-10-15)
+
+### Bug Fixes
+
+- **pug-parser:** fix parsing outdent code ([dd50bb4](https://github.com/markuplint/markuplint/commit/dd50bb423bbd1c466fe10c59a1778b5572d60457))
+
 ## [4.6.8](https://github.com/markuplint/markuplint/compare/@markuplint/pug-parser@4.6.7...@markuplint/pug-parser@4.6.8) (2024-10-14)
 
 ### Bug Fixes

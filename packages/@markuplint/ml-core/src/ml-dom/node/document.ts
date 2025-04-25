@@ -25,7 +25,7 @@ import {
 	ARIA_RECOMMENDED_VERSION,
 } from '@markuplint/ml-spec';
 import { ConfigParserError } from '@markuplint/parser-utils';
-import { InvalidSelectorError, matchSelector } from '@markuplint/selector';
+import { InvalidSelectorError } from '@markuplint/selector';
 
 import { log as coreLog } from '../../debug.js';
 import { createNode } from '../helper/create-node.js';
@@ -477,6 +477,16 @@ export class MLDocument<T extends RuleConfigValue, O extends PlainData = undefin
 	 */
 	get forms(): HTMLCollectionOf<HTMLFormElement> {
 		throw new UnexpectedCallError('Not supported "forms" property');
+	}
+
+	/**
+	 * **IT THROWS AN ERROR WHEN CALLING THIS.**
+	 *
+	 * @unsupported
+	 * @implements DOM API: `Document`
+	 */
+	get fragmentDirective(): FragmentDirective {
+		throw new UnexpectedCallError('Not supported "fragmentDirective" property');
 	}
 
 	/**
@@ -2587,6 +2597,21 @@ export class MLDocument<T extends RuleConfigValue, O extends PlainData = undefin
 	 * @unsupported
 	 * @implements DOM API: `Document`
 	 */
+	caretPositionFromPoint(
+		x: number,
+		y: number,
+		// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+		options?: CaretPositionFromPointOptions,
+	): CaretPosition | null {
+		throw new UnexpectedCallError('Not supported "caretPositionFromPoint" method');
+	}
+
+	/**
+	 * **IT THROWS AN ERROR WHEN CALLING THIS.**
+	 *
+	 * @unsupported
+	 * @implements DOM API: `Document`
+	 */
 	caretRangeFromPoint(x: number, y: number): Range | null {
 		throw new UnexpectedCallError('Not supported "caretRangeFromPoint" method');
 	}
@@ -3163,7 +3188,7 @@ export class MLDocument<T extends RuleConfigValue, O extends PlainData = undefin
 	 * @unsupported
 	 * @implements DOM API: `Document`
 	 */
-	startViewTransition(callbackOptions?: UpdateCallback): ViewTransition {
+	startViewTransition(callbackOptions?: ViewTransitionUpdateCallback): ViewTransition {
 		throw new UnexpectedCallError('Not supported "startViewTransition" method');
 	}
 
@@ -3312,7 +3337,7 @@ export class MLDocument<T extends RuleConfigValue, O extends PlainData = undefin
 
 				const selector = nodeRule.selector ?? nodeRule.regexSelector;
 
-				const matches = matchSelector(selectorTarget, selector);
+				const matches = selectorTarget.matchMLSelector(selector);
 
 				if (!matches.matched) {
 					continue;
@@ -3367,7 +3392,7 @@ export class MLDocument<T extends RuleConfigValue, O extends PlainData = undefin
 						continue;
 					}
 
-					const matches = matchSelector(selectorTarget, selector);
+					const matches = selectorTarget.matchMLSelector(selector);
 					if (!matches.matched) {
 						continue;
 					}

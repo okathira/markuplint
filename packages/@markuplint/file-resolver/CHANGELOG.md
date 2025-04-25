@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.14](https://github.com/markuplint/markuplint/compare/@markuplint/file-resolver@4.9.13...@markuplint/file-resolver@4.9.14) (2025-04-13)
+
+**Note:** Version bump only for package @markuplint/file-resolver
+
+## [4.9.13](https://github.com/markuplint/markuplint/compare/@markuplint/file-resolver@4.9.12...@markuplint/file-resolver@4.9.13) (2025-03-09)
+
+**Note:** Version bump only for package @markuplint/file-resolver
+
+## [4.9.12](https://github.com/markuplint/markuplint/compare/@markuplint/file-resolver@4.9.11...@markuplint/file-resolver@4.9.12) (2025-02-27)
+
+**Note:** Version bump only for package @markuplint/file-resolver
+
+## [4.9.11](https://github.com/markuplint/markuplint/compare/@markuplint/file-resolver@4.9.10...@markuplint/file-resolver@4.9.11) (2025-02-11)
+
+**Note:** Version bump only for package @markuplint/file-resolver
+
+## [4.9.10](https://github.com/markuplint/markuplint/compare/@markuplint/file-resolver@4.9.9...@markuplint/file-resolver@4.9.10) (2025-02-04)
+
+**Note:** Version bump only for package @markuplint/file-resolver
+
+## [4.9.9](https://github.com/markuplint/markuplint/compare/@markuplint/file-resolver@4.9.8...@markuplint/file-resolver@4.9.9) (2024-12-04)
+
+**Note:** Version bump only for package @markuplint/file-resolver
+
+## [4.9.8](https://github.com/markuplint/markuplint/compare/@markuplint/file-resolver@4.9.7...@markuplint/file-resolver@4.9.8) (2024-11-17)
+
+**Note:** Version bump only for package @markuplint/file-resolver
+
+## [4.9.7](https://github.com/markuplint/markuplint/compare/@markuplint/file-resolver@4.9.6...@markuplint/file-resolver@4.9.7) (2024-10-31)
+
+**Note:** Version bump only for package @markuplint/file-resolver
+
+## [4.9.6](https://github.com/markuplint/markuplint/compare/@markuplint/file-resolver@4.9.5...@markuplint/file-resolver@4.9.6) (2024-10-28)
+
+**Note:** Version bump only for package @markuplint/file-resolver
+
+## [4.9.5](https://github.com/markuplint/markuplint/compare/@markuplint/file-resolver@4.9.4...@markuplint/file-resolver@4.9.5) (2024-10-27)
+
+**Note:** Version bump only for package @markuplint/file-resolver
+
+## [4.9.4](https://github.com/markuplint/markuplint/compare/@markuplint/file-resolver@4.9.3...@markuplint/file-resolver@4.9.4) (2024-10-15)
+
+**Note:** Version bump only for package @markuplint/file-resolver
+
 ## [4.9.3](https://github.com/markuplint/markuplint/compare/@markuplint/file-resolver@4.9.2...@markuplint/file-resolver@4.9.3) (2024-10-14)
 
 **Note:** Version bump only for package @markuplint/file-resolver

@@ -166,7 +166,14 @@
 		"yamanoku",
 		"Yasuo",
 		"yearless",
-		"Yusuke"
+		"Yusuke",
+		"xywh",
+
+		// Specs
+		"closedby",
+
+		// Typo
+		"verifing"
 	],
 	"overrides": [
 		{
