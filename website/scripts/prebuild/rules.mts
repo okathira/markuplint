@@ -67,19 +67,14 @@ async function getDocFile(
 
   rewrote = matter.stringify(rewrote, frontMatter);
 
-  return {
+  return structuredClone({
     ...inherit,
-    // structuredClone function cannot create the same object.
-    // eslint-disable-next-line unicorn/prefer-structured-clone
-    ...JSON.parse(
-      JSON.stringify({
-      lang,
-      id: frontMatter.id,
-      description: frontMatter.description,
-      contents: rewrote,
-    }),
-    ),
-  };
+    // Prevent overwriting each property with falsy values.
+    ...(lang ? { lang } : undefined),
+    ...(frontMatter.id ? { id: frontMatter.id } : undefined),
+    ...(frontMatter.description ? { description: frontMatter.description } : undefined),
+    contents: rewrote,
+  });
 }
 
 async function createRuleDoc(path: string) {
