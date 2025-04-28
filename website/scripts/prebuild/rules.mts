@@ -67,16 +67,18 @@ async function getDocFile(
 
   rewrote = matter.stringify(rewrote, frontMatter);
 
-  const langObj = lang === undefined ? {} : { lang }; // for strict undefined check
-
   return {
     ...inherit,
-    ...structuredClone({
-      ...langObj,
+    // structuredClone function cannot create the same object.
+    // eslint-disable-next-line unicorn/prefer-structured-clone
+    ...JSON.parse(
+      JSON.stringify({
+      lang,
       id: frontMatter.id,
       description: frontMatter.description,
       contents: rewrote,
     }),
+    ),
   };
 }
 
